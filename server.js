@@ -9,6 +9,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 
+// requiring html routing
+require("./routes/htmlRoutes")(app);
+
+// requiring api routing
+require("./routes/apiRoutes")(app);
 
 // Server listening on port
 app.listen(port, function() {
