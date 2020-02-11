@@ -10,10 +10,10 @@ app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 
 // requiring html routing
-require("./routes/htmlRoutes")(app);
+require("./routes/htmlRoutes.js")(app);
 
 // requiring api routing
-require("./routes/apiRoutes")(app);
+require("./routes/apiRoutes.js")(app);
 
 // Server listening on port
 app.listen(port, function() {
