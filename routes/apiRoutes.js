@@ -27,12 +27,20 @@ module.exports = function(app){
          })
        
     })
-};
 
-app.delete("../public/notes.html:id", function(req, res){
-    let specificNoteId = req.params.id;
-    fs.readFile("../db/db.json", "uft-8", (err, data), err =>{
-        if (err) throw err;
-        res.send("../db/db.json");
+    app.delete("../public/notes.html:id", function(req, res){
+        let specificNoteId = req.params.id;
+        fs.readFile("../db/db.json", "uft-8", (err, data), err =>{
+            if (err) throw err;
+            let db = JSON.parse(data);
+            let newDb = db.filter(function(note){
+                return note.id != specificNoteId;
+            });
+            fs.writeFile("../db/db.json", JSON.stringify(newDb, null, 2), err =>{
+                if (err) throw err;
+                res.send("../db/db.json");
+            })
+        })
     })
-})
+
+};
