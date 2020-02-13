@@ -1,17 +1,19 @@
 const path = require("path");
 const fs = require("fs");
-// const uuid = require("uuid/v4");
 
 module.exports = function(app){
 
-    app.get("/api/notes", function(req, res){
-        res.sendFile(path.join(__dirname, "../db/db.json"));
+    app.get("/api/notes", function(err, res){
+        if (err) throw err;
+        res.sendFile(path.join(__dirname, "./db/db.json"));
     });
 
+
+    // 
     app.post("/api/notes", function(req, res){
         let newNote = req.body;
 
-        fs.readFile("../db/db.json", "utf-8", (err, data) =>{
+        fs.readFile("./db/db.json", "utf-8", (err, data) =>{
             if (err) throw err;
             let db = JSON.parse(data);
             db.push(newNote);
@@ -20,25 +22,27 @@ module.exports = function(app){
                 db[i].id = idKey++;
             }
 
-            fs.writeFile("../db/db.json", JSON.stringify(db), function(err){
+            fs.writeFile("./db/db.json", JSON.stringify(db), function(err){
                 if (err) throw err;
                 return res.status(200).send("Added new Note");
             })
          })
        
     })
+    // 
 
-    app.delete("../public/notes.html:id", function(req, res){
+
+    app.delete("/api/notes:id", function(req, res){
         let specificNoteId = req.params.id;
-        fs.readFile("../db/db.json", "uft-8", (err, data), err =>{
+        fs.readFile("./db/db.json", "uft-8", (err, data), err =>{
             if (err) throw err;
             let db = JSON.parse(data);
             let newDb = db.filter(function(note){
                 return note.id != specificNoteId;
             });
-            fs.writeFile("../db/db.json", JSON.stringify(newDb, null, 2), err =>{
+            fs.writeFile("./db/db.json", JSON.stringify(newDb, null, 2), err =>{
                 if (err) throw err;
-                res.send("../db/db.json");
+                res.send("./db/db.json");
             })
         })
     })
