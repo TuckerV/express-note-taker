@@ -4,11 +4,11 @@ const fs = require("fs");
 
 module.exports = function(app){
 
-    app.get("../public/notes.html", function(req, res){
+    app.get("/api/notes", function(req, res){
         res.sendFile(path.join(__dirname, "../db/db.json"));
     });
 
-    app.post("../public/notes.html", function(req, res){
+    app.post("/api/notes", function(req, res){
         let newNote = req.body;
 
         fs.readFile("../db/db.json", "utf-8", (err, data) =>{
