@@ -1,1 +1,7 @@
-[{"title":"Test Title","text":"Test text","id":1},{"title":"lkjlkjllkjlkj","text":"lkjlkjlkj","id":2},{"title":"jhgjhg","text":"jhgjhgjhg","id":3},{"title":"sadfsa","text":"asdfasdf","id":4}]
+[
+  {
+    "id": "65d98fbd-ccf1-4eb2-8220-4a4aa6ab69a5",
+    "title": "First Note",
+    "text": "First note text here"
+  }
+]
