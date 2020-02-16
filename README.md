@@ -2,8 +2,8 @@
 Homework 11 for UU Full-flex bootcamp
 
 Tucker Vassau
-![Img](images\screenshot_home.png)
-![Img](images\screenshot_notepad.png)
+![Img]("./images/screenshot_home.png")
+![Img]("./images/screenshot_notepad.png")
 
 ## description
 
