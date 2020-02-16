@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const app = express();
 
-let port = process.env.port || 3000;
+let PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -15,7 +15,7 @@ require("./routes/htmlRoutes.js")(app);
 // requiring api routing
 require("./routes/apiRoutes.js")(app);
 
-// Server listening on port
-app.listen(port, function() {
-    console.log(`Server is running on ${port}`);
+// Server listening on PORT
+app.listen(PORT, function() {
+    console.log(`Server is running on ${PORT}`);
   });
